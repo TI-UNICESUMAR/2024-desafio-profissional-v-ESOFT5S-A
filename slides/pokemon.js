@@ -19,7 +19,7 @@ function buildPokemonWithInfo(pokemonData) {
     tipos: pokemonData.types.map(type => type.type.name),
     peso: pokemonData.weight,
     altura: pokemonData.height,
-    id: pokemonData.id,
+    númeroDex: pokemonData.id,
     sprite: pokemonData.sprites.front_default
   }
 }
@@ -31,11 +31,8 @@ async function getPokemonDataWithPromises() {
     for (i = 1; i < 152; i++) {
       const pokemonInfoJson = await getPokemonInfo(i);
 
-      // const pokemon =  buildPokemonWithInfo(pokemonInfoJson);
       pokemonArray.push(buildPokemonWithInfo(pokemonInfoJson))
-      // const pokemonInfoString = JSON.stringify(pokemonArray, null, 2);
     
-      // pokemonArray.push(await writePokemonFile("pokemon.json", pokemonInfoString))
     }
     const pokemonInfoString = JSON.stringify(pokemonArray, null, 2);
     await writePokemonFile("pokemon.json", pokemonInfoString)
