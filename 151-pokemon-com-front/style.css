@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Madimi One", sans-serif;
+  font-weight: normal;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+header {
+  background-color: rgba(207, 155, 155, 0.5);
+  padding: 30px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+nav span {
+  padding: 10px 0;
+  border-radius: 10px;
+  background-color: rgb(236, 236, 118);
+}
+
+#main div {
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+#main div:nth-child(odd) {
+  background-color: rgb(218, 245, 245);
+}
+
+.nav-fixed {
+  width: 80vw;
+  position: fixed;
+  top: 0;
+  background-color: rgb(236, 236, 118);
+  border-radius: 0 0 10px 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.vertical-center {
+  align-items: center;
+}
+
+.horizontal-center {
+  justify-content: center;
+}
+
+.image {
+  height: 100px;
+}
+
+.gap {
+  gap: 10px;
+}

@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 
 const QUANTITY_POKEMON = 151;
-const QUANTITY_DIVIDERS = 10;
+const QUANTITY_DIVIDERS = 30;
 const URL_POKEMON_LIST = "https://pokeapi.co/api/v2/pokemon?limit=";
 const NAME_FILE_JSON = "pokemon.json";
 
@@ -20,7 +20,7 @@ function buildPokemon(dataPokemon) {
   };
 }
 
-function writeArrayPokemon(pokemons) {
+async function writeArrayPokemon(pokemons) {
   Promise.all(
     pokemons.map((pokemon) => fetch(pokemon.url).then((resp) => resp.json()))
   ).then((values) => {
@@ -32,11 +32,10 @@ function writeArrayPokemon(pokemons) {
 
 async function getPokemonData() {
   try {
-    console.time("Await");
     const response = await fetch(URL_POKEMON_LIST + QUANTITY_POKEMON);
     const { results } = await response.json();
 
-    let interactions = Math.ceil(QUANTITY_POKEMON / 10);
+    let interactions = Math.ceil(QUANTITY_POKEMON / QUANTITY_DIVIDERS);
     for (i = 0; i < interactions; i++) {
       const size = i * QUANTITY_DIVIDERS;
       const pokemons = results.slice(size, size + QUANTITY_DIVIDERS);
@@ -46,7 +45,6 @@ async function getPokemonData() {
   } catch (err) {
     console.log("Ocorreu um erro:", err.message);
   }
-  console.timeEnd("Await");
 }
 
 getPokemonData();
