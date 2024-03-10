@@ -1,12 +1,12 @@
 const nav = document.getElementById("nav");
-let posicaoInicial = nav.offsetTop;
+let initialPosition = nav.offsetTop;
 
 window.onscroll = function () {
-  fixarDiv();
+  fixDiv();
 };
 
-function fixarDiv() {
-  if (window.scrollY >= posicaoInicial) {
+function fixDiv() {
+  if (window.scrollY >= initialPosition) {
     nav.classList.add("nav-fixed");
     return;
   }
