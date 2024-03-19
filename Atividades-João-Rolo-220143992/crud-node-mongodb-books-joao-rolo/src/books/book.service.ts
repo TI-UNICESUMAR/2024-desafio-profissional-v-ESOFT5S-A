@@ -1,9 +1,18 @@
+import AuthorService from './author.service';
 import bookModel from './book.schema'
+
 
 export class BookService {
     async create(book: any) {
-        const createdBook = bookModel.create(book)
-        return createdBook
+        
+        const newBook = (book.body)
+        console.log(newBook)
+        const findedAuthor = await new AuthorService().findById(newBook.author)
+        console.log(findedAuthor)
+        const createdFullBook = bookModel.create({ ...newBook, author: findedAuthor });
+
+        
+        return createdFullBook
     }
 
     async findById(id: any) {

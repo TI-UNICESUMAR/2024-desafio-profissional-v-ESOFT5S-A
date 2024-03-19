@@ -21,3 +21,5 @@ export class AuthorService {
         return updatedBook
     }
 }
+
+export default AuthorService;

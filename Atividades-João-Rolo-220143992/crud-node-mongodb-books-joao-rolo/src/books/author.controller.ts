@@ -1,29 +1,32 @@
-import { Request, Response } from 'express'
-import { AuthorService } from './author.service'
+import { Request, Response } from 'express';
+import { AuthorService } from './author.service';
+
+export class AuthorController {
+    private authorService: AuthorService = new AuthorService();
 
 
-class AuthorController {
+   
+
     async create(req: Request, res: Response) {
-        const newBook = await new AuthorService().create(req.body)
-        return res.json(newBook)
+        const newAuthor = await this.authorService.create(req.body);
+        res.json(newAuthor);
     }
 
     async findById(req: Request, res: Response) {
-        const book = await new AuthorService().findById(req.params.id)
-        return res.json(book)
+        const author = await this.authorService.findById(req.params.id);
+        res.json(author);
     }
 
-
     async deleteById(req: Request, res: Response) {
-        const deletedBook = await new AuthorService().deleteById(req.params.id)
-        return res.json(deletedBook)
+        const deletedAuthor = await this.authorService.deleteById(req.params.id);
+        res.json(deletedAuthor);
     }
 
     async updateById(req: Request, res: Response) {
-        const updatedBook = await new AuthorService().updateById(req.params.id, req.body)
-        return res.json(updatedBook)
+        const updatedAuthor = await this.authorService.updateById(req.params.id, req.body);
+        res.json(updatedAuthor);
     }
-
 }
+
 
 export default new AuthorController()
