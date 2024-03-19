@@ -4,8 +4,8 @@ import { BookService } from './book.service'
 
 class BookController {
     async create(req: Request, res: Response) {
-        const book = await new BookService().create(req.body)
-        return res.json(book)
+        const newBook = await new BookService().create(req.body)
+        return res.json(newBook)
     }
 
     async findById(req: Request, res: Response) {
@@ -13,22 +13,15 @@ class BookController {
         return res.json(book)
     }
 
+
     async deleteById(req: Request, res: Response) {
-        const deletedBook = await new BookService().findById(req.params.id)
-
-        new BookService().deleteById(deletedBook);
-
-        return res.json("ok");
-
+        const deletedBook = await new BookService().deleteById(req.params.id)
+        return res.json(deletedBook)
     }
 
     async updateById(req: Request, res: Response) {
-        const updatedBook = await new BookService().findById(req.params)
-
-        new BookService().updateById(updatedBook);
-
-        return res.json("ok");
-
+        const updatedBook = await new BookService().updateById(req.params.id, req.body)
+        return res.json(updatedBook)
     }
 
 }

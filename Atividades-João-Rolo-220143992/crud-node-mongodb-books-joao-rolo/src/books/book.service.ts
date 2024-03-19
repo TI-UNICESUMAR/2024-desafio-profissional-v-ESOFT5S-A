@@ -12,14 +12,12 @@ export class BookService {
     }
 
     async deleteById(id: any) {
-        const findedBook = await bookModel.deleteOne(id)
-        return findedBook
+        const deletedBook = await bookModel.findByIdAndDelete(id)
+        return deletedBook
     }
 
-
-
-    async updateById(id: any) {
-        const findedBook = await bookModel.findByIdAndUpdate(id)
-        return findedBook
+    async updateById(id: any, book: any) {
+        const updatedBook = await bookModel.findByIdAndUpdate(id, book, { new: true })
+        return updatedBook
     }
 }
