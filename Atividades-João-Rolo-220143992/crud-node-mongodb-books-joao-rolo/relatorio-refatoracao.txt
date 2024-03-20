@@ -1,0 +1,26 @@
+{Relatório tantativa de refatoração - oque aprendi - oque implementei - oque refatorei - oque tentei fazer e deu errado - referencias}
+
+-Adicionei algumas funcionalidades:
+    .adiconei a as opereções de CRUD para autores e liguei ao banco;
+    .fiz a associação de livros com autores, agora a propiedade "author" de um livro exibe um objeto de um autor já cadastrado.
+    .para o cadastro de livro então no campo "author" é passado o id do autor e o "bookService" é encarregado de buscar o autor
+     e adicionar com base no id passado;
+    
+-refatoração:
+    .Nos controllers ao invés de instanciar todas as vezes os services (tanto de livros quanto de autores) só instanciei uma vez com construct
+     (como se estivesse fazendo uma injeção de depêndencia em java com @Autowired)
+    .Organizei os diretórios por responsabilidade, em modelos, rotas, services e etc
+    .[Não concluido] separei as informações sentives em variaveis de ambiente, como a string de ligação com o mongoDb.
+
+-documentação:
+    .Tentei muito usar a biblioteca do swagger autogen nodejs mas não consegui pq não consegui importar por nada o meu json de configuração da biblioteca 
+    (swagger.json) por mais que tivesse configurado o resolveJsonModule = true e o esModuleInterop = true também, tentei resolver, comecei a
+     estragar muito coisa e parei.
+
+https://medium.com/@vikramgyawali57/10-best-practices-for-node-js-development-building-efficient-and-scalable-applications-a86de805b594
+https://github.com/goldbergyoni/nodebestpractices
+https://www.linkedin.com/pulse/boas-pr%C3%A1ticas-para-projetos-nodejs-leandresson-fulco/?originalSubdomain=pt
+https://jesielviana.vercel.app/blog/best-practices-for-nodejs-api
+https://davibaltar.medium.com/documenta%C3%A7%C3%A3o-autom%C3%A1tica-de-apis-em-node-js-eb03041c643b
+formação node.js alura 
+https://github.com/alura-cursos/3266-express-mongo/tree/aula-5
