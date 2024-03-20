@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AuthorService } from './author.service';
+import { AuthorService } from '../services/author.service';
 
 export class AuthorController {
 

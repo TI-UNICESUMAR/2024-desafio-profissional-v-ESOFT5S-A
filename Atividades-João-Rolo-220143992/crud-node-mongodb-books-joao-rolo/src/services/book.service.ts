@@ -1,5 +1,5 @@
 import AuthorService from './author.service';
-import bookModel from './book.schema'
+import bookModel from '../models/book.schema'
 
 
 export class BookService {

@@ -1,4 +1,4 @@
-import authorModel from './author.schema'
+import authorModel from '../models/author.schema'
 
 export class AuthorService {
     async create(book: any) {

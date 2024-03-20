@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import bookController from './src/books/book.controller'
-import authorController from './src/books/author.controller'
+import bookController from '../controllers/book.controller'
+import authorController from '../controllers/author.controller'
 
 const routes = Router()
 routes.post('/books', bookController.create.bind(bookController))

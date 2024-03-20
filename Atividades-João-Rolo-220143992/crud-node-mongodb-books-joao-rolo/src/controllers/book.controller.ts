@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { BookService } from './book.service'
+import { BookService } from '../services/book.service'
 
 
 
