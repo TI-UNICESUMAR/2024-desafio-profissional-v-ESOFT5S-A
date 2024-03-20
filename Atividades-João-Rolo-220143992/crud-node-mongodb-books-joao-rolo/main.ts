@@ -1,4 +1,4 @@
-import app from './app'
+import app from './src/config/app'
 
 function main() {
     app.listen(3000, 'localhost', () => {

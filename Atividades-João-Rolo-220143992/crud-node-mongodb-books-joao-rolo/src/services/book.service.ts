@@ -3,11 +3,20 @@ import bookModel from '../models/book.schema'
 
 
 export class BookService {
+
+    
+    private authorService : AuthorService;
+
+   constructor() {
+     this.authorService = new AuthorService();
+
+   }
+    
     async create(book: any) {
         
-        const newBook = (book.body)
+        const newBook = (book)
         console.log(newBook)
-        const findedAuthor = await new AuthorService().findById(newBook.author)
+        const findedAuthor = await this.authorService.findById(newBook.author)
         console.log(findedAuthor)
         const createdFullBook = bookModel.create({ ...newBook, author: findedAuthor });
 

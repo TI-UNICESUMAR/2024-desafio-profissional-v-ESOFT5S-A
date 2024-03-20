@@ -14,7 +14,7 @@ router.post('/authors', async (req, res) => {
 
 router.get('/authors/:id', async (req, res) => {
     try {
-        await authorController.findById(req, res);
+        await authorController.findById(req, res);  
     } catch (error) {
         handleError(res, error);
     }

@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import { routes } from './src/routes/routes'
+import { routes } from '../routes/routes'
 
 class App {
     express: express.Application

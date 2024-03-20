@@ -2,7 +2,7 @@ import authorModel from '../models/author.schema'
 
 export class AuthorService {
     async create(book: any) {
-        const createdBook = authorModel.create(book)
+        const createdBook = await authorModel.create(book)
         return createdBook
     }
 
