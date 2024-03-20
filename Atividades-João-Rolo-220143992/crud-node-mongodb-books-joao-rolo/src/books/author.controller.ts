@@ -2,10 +2,13 @@ import { Request, Response } from 'express';
 import { AuthorService } from './author.service';
 
 export class AuthorController {
-    private authorService: AuthorService = new AuthorService();
 
+    private authorService : AuthorService;
 
-   
+   constructor() {
+     this.authorService = new AuthorService();
+
+   }
 
     async create(req: Request, res: Response) {
         const newAuthor = await this.authorService.create(req.body);
