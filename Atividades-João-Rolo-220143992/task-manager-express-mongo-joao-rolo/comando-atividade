@@ -3,27 +3,27 @@ https://dontpad.com/esoft5s-a-bussola
 Express ou Fastify
 
 check-list:
-[] - Entender a atividade, isso envolve ler a atividade
-[] - Instalar as dependencias
+[] - Entender a atividade, isso envolve ler a atividade [OK]
+[] - Instalar as dependencias [OK]
 [] - Opcional - Criar um dockerfile e um docker-compose.yml pra criar o container do banco escolhido
-[] - Da um check se o servidor está funcionando
-[] - Criar a service para a entidade escolhida, e fazer o CRUD
+[] - Da um check se o servidor está funcionando [OK]
+[] - Criar a service para a entidade escolhida, e fazer o CRUD [OK]
 [] - Fazer a controller
-[] - Criar as rotas no arquivo de rotas
-[] - Testar as rotas
+[] - Criar as rotas no arquivo de rotas [OK]
+[] - Testar as rotas [OK]
 [] - Partir para as rotas com regra de negócio
 
 	
 Entidades:
 
 - Usuário:
-	Atributos: ID, username, peso, senha, e-mail.
+	Atributos: ID, username, peso, senha, e-mail. [OK]
 	
 - Categoria:
-	Atributos: ID, nome, cor (para identificação visual).
+	Atributos: ID, nome, cor (para identificação visual). [OK]
 
 - Tarefa:
-	Atributos: ID, título, descrição, data de criação, data de conclusão, tipo, categoria (opcional), status (pendente, em andamento, concluída), e usuário associado.
+	Atributos: ID, título, descrição, data de criação, data de conclusão, tipo, categoria (opcional), status (pendente, em andamento, concluída), e usuário associado. [OK]
 
 
 
@@ -31,7 +31,7 @@ Requisitos das Rotas (OPICIONAL - FAÇA POR ÚLTIMO):
 
 Autenticação:
 
-Rota de registro de usuário.
+Rota de registro de usuário. [OK]
 Rota de login de usuário.
 
 Tarefas:
