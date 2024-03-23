@@ -25,4 +25,8 @@ export class UserRepository {
         await userModel.findByIdAndDelete(id);
     }
 
+    public async findByEmail(email: string): Promise<User | null> {
+        return userModel.findOne({ email: email });
+    } 
+
 }

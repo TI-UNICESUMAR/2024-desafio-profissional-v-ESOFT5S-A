@@ -1,6 +1,6 @@
 
 export interface User {
-    id: string,
+    _id: string,
     username: string,
     weight: Number,
     email: string, 

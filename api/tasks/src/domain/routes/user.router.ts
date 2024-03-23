@@ -10,6 +10,7 @@ const userService: UserService = new UserService(userRepository);
 const userController: UserController = new UserController(userService);
 
 userRoutes.post('', userController.create.bind(userController))
+userRoutes.post('/auth', userController.auth.bind(userController))
 userRoutes.get('/:id', userController.findById.bind(userController))
 userRoutes.get('', userController.findAll.bind(userController))
 userRoutes.put('/:id', userController.update.bind(userController))

@@ -14,5 +14,6 @@ categoryRoutes.get('/:id', categoryController.findById.bind(categoryController))
 categoryRoutes.get('', categoryController.findAll.bind(categoryController))
 categoryRoutes.put('/:id', categoryController.update.bind(categoryController))
 categoryRoutes.delete('/:id', categoryController.delete.bind(categoryController))
+categoryRoutes.get('/user/:id', categoryController.findAllByUser.bind(categoryController))
 
 export { categoryRoutes }

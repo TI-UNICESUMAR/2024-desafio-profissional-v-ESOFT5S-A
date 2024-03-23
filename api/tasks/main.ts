@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-
 const PORT: number = parseInt(process.env.API_PORT!, 10);
 const API_URL: string = process.env.API_URL!;
 

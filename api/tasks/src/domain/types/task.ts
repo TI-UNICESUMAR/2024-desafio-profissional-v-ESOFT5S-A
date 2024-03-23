@@ -3,7 +3,8 @@ import { Category } from "./category";
 import { User } from "./user";
 
 export interface Task {
-    id: string,
+    _id: string,
+    description: string,
     title: string,
     dateCreate: Date, 
     dateConclusion: Date,

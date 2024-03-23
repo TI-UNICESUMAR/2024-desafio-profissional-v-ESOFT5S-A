@@ -26,4 +26,8 @@ export class TaskRepository {
         await taskModel.findByIdAndDelete(id);
     }
 
+    public async findAllByUser(idUser: string): Promise<Task[]> {
+        return taskModel.find({ user: idUser });
+    }
+
 }

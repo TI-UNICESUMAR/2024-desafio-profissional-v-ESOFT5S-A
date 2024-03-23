@@ -4,6 +4,7 @@ import { StatusCode } from "../enums/status.code";
 import { CreateUserDTO } from '../dtos/create-user.dto';
 import { UpdateUserDTO } from '../dtos/update-user.dto';
 import { User } from '../types/user';
+import { LoginUserDTO } from '../dtos/login-user.dto';
 
 export class UserController {
 
@@ -16,15 +17,15 @@ export class UserController {
     public async findAll(request: Request, response: Response): Promise<void> {
         const users: User[] = await this.service.findAll();
 
-        response.status(StatusCode.SUCCESS).send(users);
+        response.status(StatusCode.SUCCESS).json(users);
 
     }
 
     public async findById(request: Request, response: Response): Promise<void> {
         const idUser: string = request.params.id;
 
-        const foundUser: User | null = await this.service.findById(idUser);
-        response.status(StatusCode.SUCCESS).send(foundUser);
+        const foundUser: User = await this.service.find(idUser);
+        response.status(StatusCode.SUCCESS).json(foundUser);
 
     }   
 
@@ -32,7 +33,7 @@ export class UserController {
         const user: CreateUserDTO = request.body;
 
         this.service.create(user)
-        response.status(StatusCode.CREATED).send()
+        response.status(StatusCode.CREATED).json()
 
     }
 
@@ -41,7 +42,7 @@ export class UserController {
         const user: UpdateUserDTO = request.body
 
         this.service.update(idUser, user)
-        response.status(StatusCode.SUCCESS).send()
+        response.status(StatusCode.SUCCESS).json()
 
     }
 
@@ -49,7 +50,16 @@ export class UserController {
         const idUser: string = request.params.id
 
         this.service.delete(idUser)
-        response.status(StatusCode.NO_CONTENT).send()
+        response.status(StatusCode.NO_CONTENT).json()
+
+    }
+
+    public async auth(request: Request, response: Response): Promise<void> {
+
+        const dataUser: LoginUserDTO = request.body;
+
+        await this.service.auth(dataUser)
+        response.status(StatusCode.SUCCESS).json()
 
     }
 

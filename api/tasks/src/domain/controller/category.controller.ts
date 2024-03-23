@@ -15,7 +15,7 @@ export class CategoryController {
     public async findAll(request: Request, response: Response): Promise<void> {
         const categories: Category[] = await this.service.findAll();
 
-        response.status(StatusCode.SUCCESS).send(categories);
+        response.status(StatusCode.SUCCESS).json(categories);
 
     }
 
@@ -23,7 +23,7 @@ export class CategoryController {
         const idCategory: string = request.params.id;
 
         const foundCategory: Category | null = await this.service.findById(idCategory);
-        response.status(StatusCode.SUCCESS).send(foundCategory);
+        response.status(StatusCode.SUCCESS).json(foundCategory);
 
     }   
 
@@ -31,7 +31,7 @@ export class CategoryController {
         const category: CategoryDTO = request.body;
 
         this.service.create(category)
-        response.status(StatusCode.CREATED).send()
+        response.status(StatusCode.CREATED).json()
 
     }
 
@@ -40,7 +40,7 @@ export class CategoryController {
         const category: CategoryDTO = request.body
 
         this.service.update(idCategory, category)
-        response.status(StatusCode.SUCCESS).send()
+        response.status(StatusCode.SUCCESS).json()
 
     }
 
@@ -48,8 +48,15 @@ export class CategoryController {
         const idCategory: string = request.params.id
 
         this.service.delete(idCategory)
-        response.status(StatusCode.NO_CONTENT).send()
+        response.status(StatusCode.NO_CONTENT).json()
 
+    }
+
+    public async findAllByUser(request: Request, response: Response): Promise<void> {
+        const idUser: string = request.params.id;
+
+        const categories: Category[] = await this.service.findAllByUser(idUser)
+        response.status(StatusCode.SUCCESS).json(categories)
     }
 
 }

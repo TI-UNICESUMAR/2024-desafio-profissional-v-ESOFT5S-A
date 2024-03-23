@@ -22,12 +22,16 @@ export class CategoryService {
         await this.repository.create(category)
     }
 
-    public async update(id: String, category: CategoryDTO): Promise<void> {
+    public async update(id: string, category: CategoryDTO): Promise<void> {
         await this.repository.update(id, category)
     }
 
-    public async delete(id: String): Promise<void> {
+    public async delete(id: string): Promise<void> {
         await this.repository.delete(id)
+    }
+
+    public async findAllByUser(idUser: string): Promise<Category[]> {
+        return this.repository.findAllByUser(idUser);
     }
 
 }
