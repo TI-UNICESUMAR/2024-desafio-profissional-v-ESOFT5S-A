@@ -1,8 +1,8 @@
 import { Schema, model, Document } from "mongoose";
-import  User  from "./user"; 
+import { User } from "./user";
 import Category from "./category";
 
-interface Task extends Document {
+export interface Task extends Document {
     title: string;
     description: string;
     finishedAt?: Date;

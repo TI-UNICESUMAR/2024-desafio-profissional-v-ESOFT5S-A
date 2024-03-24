@@ -1,16 +1,16 @@
-import userModel from "../entity/user"
-import {User} from "../entity/user"
+import { User } from "../entity/user"
+import Userinterface from "../entity/user"
 
 
 export default class UserService {
-    async create(user: User) {
-        
-        const createdBook = await userModel.create(user)
+    async create(user: Userinterface) {
+
+        const createdBook = await User.create(user)
         return createdBook
     }
 
-    async findById(id: User["_id"]) {
-   const findedBook = await userModel.findById(id)
+    async findById(id: Userinterface["_id"]) {
+        const findedBook = await User.findById(id)
         return findedBook
     }
 }
