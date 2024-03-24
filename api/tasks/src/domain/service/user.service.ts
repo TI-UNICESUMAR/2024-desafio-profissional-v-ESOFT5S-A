@@ -30,12 +30,14 @@ export class UserService {
         await this.repository.create(user)
     }
 
-    public async update(id: String, user: UpdateUserDTO): Promise<void> {
-        await this.repository.update(id, user)
+    public async update(id: string, user: UpdateUserDTO): Promise<void> {
+        const foundUser: User = await this.findById(id);
+        await this.repository.update(foundUser, user)
     }
 
-    public async delete(id: String): Promise<void> {
-        await this.repository.delete(id)
+    public async delete(id: string): Promise<void> {
+        const foundUser: User = await this.findById(id);
+        await this.repository.delete(foundUser)
     }
 
     public async auth(user: LoginUserDTO): Promise<void> {

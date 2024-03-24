@@ -5,6 +5,7 @@ import { TaskRepository } from './../repository/task.repository';
 import { StatusCode } from '../enums/status.code';
 import { StatusTask } from '../enums/status.task';
 import { TasksByCategory } from '../types/tasksByCategory';
+import { UpdateTaskDTO } from '../dtos/update-task.dto';
 
 export class TaskService {
 
@@ -26,12 +27,14 @@ export class TaskService {
         await this.repository.create(task)
     }
 
-    public async update(id: string, task: CreateTaskDTO): Promise<void> {
-        await this.repository.update(id, task)
+    public async update(id: string, task: UpdateTaskDTO): Promise<void> {
+        const foundTask: Task = await this.findById(id);
+        await this.repository.update(foundTask, task);
     }
 
     public async delete(id: string): Promise<void> {
-        await this.repository.delete(id)
+        const foundTask: Task = await this.findById(id);
+        await this.repository.delete(foundTask)
     }
 
     public async findAllByUser(idUser: string): Promise<Task[]> {

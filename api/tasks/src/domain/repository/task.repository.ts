@@ -1,5 +1,3 @@
-import { Category } from '../types/category';
-import { CategoryDTO } from '../dtos/category.dto';
 import taskModel from '../entity/task.schema'
 import { Task } from '../types/task';
 import { CreateTaskDTO } from '../dtos/create-task.dto';
@@ -18,12 +16,12 @@ export class TaskRepository {
         await taskModel.create(task);
     }
 
-    public async update(id: String, task: CreateTaskDTO): Promise<void> {
-        await taskModel.findByIdAndUpdate(id, task);
+    public async update(foundTask: Task, task: CreateTaskDTO): Promise<void> {
+        await taskModel.updateOne(foundTask, task);
     }
 
-    public async delete(id: String): Promise<void> {
-        await taskModel.findByIdAndDelete(id);
+    public async delete(task: Task): Promise<void> {
+        await taskModel.deleteOne(task);
     }
 
     public async findAllByUser(idUser: string): Promise<Task[]> {

@@ -17,12 +17,12 @@ export class UserRepository {
         await userModel.create(user);
     }
 
-    public async update(id: String, user: UpdateUserDTO): Promise<void> {
-        await userModel.findByIdAndUpdate(id, user);
+    public async update(foundUser: User, user: UpdateUserDTO): Promise<void> {
+        await userModel.updateOne(foundUser, user);
     }
 
-    public async delete(id: String): Promise<void> {
-        await userModel.findByIdAndDelete(id);
+    public async delete(foundUser: User): Promise<void> {
+        await userModel.deleteOne(foundUser);
     }
 
     public async findByEmail(email: string): Promise<User | null> {

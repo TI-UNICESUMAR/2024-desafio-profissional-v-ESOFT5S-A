@@ -1,3 +1,4 @@
+import { UpdateTaskDTO } from './../dtos/update-task.dto';
 import { Request, Response } from 'express'
 import { StatusCode } from "../enums/status.code";
 import { TaskService } from '../service/task.service';
@@ -22,29 +23,29 @@ export class TaskController {
     public async findById(request: Request, response: Response): Promise<void> {
         const idTask: string = request.params.id;
 
-        const foundTask: Task | null = await this.service.find(idTask);
+        const foundTask: Task = await this.service.find(idTask);
         response.status(StatusCode.SUCCESS).json(foundTask);
     }   
 
     public async create(request: Request, response: Response): Promise<void> {
         const task: CreateTaskDTO = request.body;
 
-        this.service.create(task)
+        await this.service.create(task)
         response.status(StatusCode.CREATED).json()
     }
 
     public async update(request: Request, response: Response): Promise<void> {
         const idTask: string = request.params.id
-        const task: CreateTaskDTO = request.body
+        const task: UpdateTaskDTO = request.body
 
-        this.service.update(idTask, task)
+        await this.service.update(idTask, task)
         response.status(StatusCode.SUCCESS).json()
     }
 
     public async delete(request: Request, response: Response): Promise<void> {
         const idTask: string = request.params.id
 
-        this.service.delete(idTask)
+        await this.service.delete(idTask)
         response.status(StatusCode.NO_CONTENT).json()
     }
 

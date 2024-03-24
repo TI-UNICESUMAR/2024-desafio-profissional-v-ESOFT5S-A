@@ -1,3 +1,4 @@
+import { UpdateUserSchema } from './../dtos/update-user.dto';
 import { Request, Response } from 'express'
 import { UserService } from "../service/user.service";
 import { StatusCode } from "../enums/status.code";
@@ -32,7 +33,7 @@ export class UserController {
     public async create(request: Request, response: Response): Promise<void> {
         const user: CreateUserDTO = request.body;
 
-        this.service.create(user)
+        await this.service.create(user)
         response.status(StatusCode.CREATED).json()
 
     }
@@ -41,15 +42,14 @@ export class UserController {
         const idUser: string = request.params.id
         const user: UpdateUserDTO = request.body
 
-        this.service.update(idUser, user)
+        await this.service.update(idUser, user)
         response.status(StatusCode.SUCCESS).json()
-
     }
 
     public async delete(request: Request, response: Response): Promise<void> {
         const idUser: string = request.params.id
 
-        this.service.delete(idUser)
+        await this.service.delete(idUser)
         response.status(StatusCode.NO_CONTENT).json()
 
     }

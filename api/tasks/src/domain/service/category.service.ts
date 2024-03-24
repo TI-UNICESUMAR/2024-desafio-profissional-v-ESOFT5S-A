@@ -1,6 +1,9 @@
+import { NotFoundError } from './../helpers/errors/not-found.error';
 import { CategoryRepository } from '../repository/category.repository';
 import { Category } from '../types/category';
-import { CategoryDTO } from '../dtos/category.dto';
+import { CreateCategoryDTO } from '../dtos/create-category.dto';
+import { StatusCode } from '../enums/status.code';
+import { UpdateCategoryDTO } from '../dtos/update-category.dto';
 
 export class CategoryService {
 
@@ -14,24 +17,39 @@ export class CategoryService {
         return this.repository.findAll()
     }
 
-    public async findById(id: string): Promise<Category | null> {
-        return this.repository.findById(id)
+    public async find(id: string): Promise<Category> {
+        return this.findById(id);
     }
 
-    public async create(category: CategoryDTO): Promise<void> {        
+    public async create(category: CreateCategoryDTO): Promise<void> {        
         await this.repository.create(category)
     }
 
-    public async update(id: string, category: CategoryDTO): Promise<void> {
-        await this.repository.update(id, category)
+    public async update(id: string, category: UpdateCategoryDTO): Promise<void> {
+        const foundCategory: Category = await this.findById(id);
+        await this.repository.update(foundCategory, category)
     }
 
     public async delete(id: string): Promise<void> {
-        await this.repository.delete(id)
+        const category: Category = await this.findById(id);
+        await this.repository.delete(category)
     }
 
     public async findAllByUser(idUser: string): Promise<Category[]> {
         return this.repository.findAllByUser(idUser);
+    }
+    
+    private async findById(id: string): Promise<Category> {
+
+
+        const category: Category | null = await this.repository.findById(id);
+
+        if(!category) {
+            throw new NotFoundError(`Category ${id} not found`, StatusCode.NOT_FOUND)
+        }
+
+        return category;
+
     }
 
 }

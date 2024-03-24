@@ -1,7 +1,8 @@
 import { Category } from './../types/category';
-import { CategoryDTO } from '../dtos/category.dto';
+import { CreateCategoryDTO } from '../dtos/create-category.dto';
 import categoryModel from '../entity/category.schema'
 import { Types } from 'mongoose';
+import { UpdateCategoryDTO } from '../dtos/update-category.dto';
 const { ObjectId } = Types;
 
 export class CategoryRepository {
@@ -14,16 +15,16 @@ export class CategoryRepository {
         return categoryModel.findById(id);
     }
 
-    public async create(category: CategoryDTO): Promise<void> {
+    public async create(category: CreateCategoryDTO): Promise<void> {
         await categoryModel.create(category);
     }
 
-    public async update(id: string, category: CategoryDTO): Promise<void> {
-        await categoryModel.findByIdAndUpdate(id, category);
+    public async update(oldCategory: Category, category: UpdateCategoryDTO): Promise<void> {
+        await categoryModel.updateOne(oldCategory, category);
     }
 
-    public async delete(id: string): Promise<void> {
-        await categoryModel.findByIdAndDelete(id);
+    public async delete(category: Category): Promise<void> {
+        await categoryModel.deleteOne(category);
     }
 
     public async findAllByUser(idUser: string): Promise<Category[]> {

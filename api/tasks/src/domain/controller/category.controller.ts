@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
 import { StatusCode } from "../enums/status.code";
 import { CategoryService } from '../service/category.service';
-import { CategoryDTO } from '../dtos/category.dto';
+import { CreateCategoryDTO } from '../dtos/create-category.dto';
+import { UpdateCategoryDTO } from '../dtos/update-category.dto';
 import { Category } from '../types/category';
 
 export class CategoryController {
@@ -22,24 +23,24 @@ export class CategoryController {
     public async findById(request: Request, response: Response): Promise<void> {
         const idCategory: string = request.params.id;
 
-        const foundCategory: Category | null = await this.service.findById(idCategory);
+        const foundCategory: Category = await this.service.find(idCategory);
         response.status(StatusCode.SUCCESS).json(foundCategory);
 
     }   
 
     public async create(request: Request, response: Response): Promise<void> {
-        const category: CategoryDTO = request.body;
+        const category: CreateCategoryDTO = request.body;
 
-        this.service.create(category)
+        await this.service.create(category)
         response.status(StatusCode.CREATED).json()
 
     }
 
     public async update(request: Request, response: Response): Promise<void> {
         const idCategory: string = request.params.id
-        const category: CategoryDTO = request.body
+        const category: UpdateCategoryDTO = request.body
 
-        this.service.update(idCategory, category)
+        await this.service.update(idCategory, category)
         response.status(StatusCode.SUCCESS).json()
 
     }
@@ -47,7 +48,7 @@ export class CategoryController {
     public async delete(request: Request, response: Response): Promise<void> {
         const idCategory: string = request.params.id
 
-        this.service.delete(idCategory)
+        await this.service.delete(idCategory)
         response.status(StatusCode.NO_CONTENT).json()
 
     }
