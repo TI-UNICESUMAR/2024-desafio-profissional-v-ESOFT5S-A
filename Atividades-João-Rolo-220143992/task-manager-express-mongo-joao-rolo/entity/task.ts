@@ -1,6 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 import { User } from "./user";
-import Category from "./category";
+import {Category} from "./category";
 
 export interface Task extends Document {
     title: string;
@@ -18,9 +18,9 @@ const taskSchema = new Schema<Task>({
     description: { type: String, required: true },
     finishedAt: { type: Date },
     type: { type: String },
-    category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
+    category: { type: Schema.Types.ObjectId, ref: 'Category', required: false },
     status: { type: String, required: true },
-    responsibleUser: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+    responsibleUser: { type: Schema.Types.ObjectId, ref: 'User', required: false }
 }, { timestamps: true });
 
 const TaskModel = model<Task>('Task', taskSchema);

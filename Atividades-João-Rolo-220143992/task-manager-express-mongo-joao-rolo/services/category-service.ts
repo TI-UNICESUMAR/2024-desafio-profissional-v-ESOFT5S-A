@@ -1,17 +1,16 @@
-import { Category } from "../entity/category"
-import categoryModel from "../entity/category"
+import CategoryInterface, { Category } from "../entity/category";
+import categoryModel from "../entity/category";
 
-class CategoryService {
-    async create(category: Category) {
-        const createdCategory = await categoryModel.create(category)
-        return createdCategory
+export default class CategoryService {
+    async create(category: CategoryInterface) {
+        const createdCategory = await Category.create(category);
+        return createdCategory;
     }
 
-    async findById(id: Category["_id"]) {
-        const findedCategory = await categoryModel.findById(id)
-
+    async findById(id: CategoryInterface["_id"]) {
+        const findedCategory = await Category.findById(id);
+        return findedCategory;
     }
-
 }
-export default new CategoryService()
 
+export {CategoryService}

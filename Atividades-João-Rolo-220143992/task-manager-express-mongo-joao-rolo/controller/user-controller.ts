@@ -14,6 +14,13 @@ class UserController {
         return res.json(findedUser)
     }
 
+    async userLogin(req: Request, res: Response) {
+        const user = await new UserService().userLogin(req.body)
+        if (!user) {
+            return res.status(401).send("Usuario ou senha incorretos")
+        }
+        return res.send("Usuario logado com sucesso")
+    }
 
 }
 

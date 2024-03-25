@@ -3,26 +3,26 @@ https://dontpad.com/esoft5s-a-bussola
 Express ou Fastify
 
 check-list:
-[] - Entender a atividade, isso envolve ler a atividade [OK]
-[] - Instalar as dependencias [OK]
+[ok] - Entender a atividade, isso envolve ler a atividade 
+[ok] - Instalar as dependencias 
 [] - Opcional - Criar um dockerfile e um docker-compose.yml pra criar o container do banco escolhido
-[] - Da um check se o servidor está funcionando [OK]
-[] - Criar a service para a entidade escolhida, e fazer o CRUD [OK]
-[] - Fazer a controller
-[] - Criar as rotas no arquivo de rotas [OK]
-[] - Testar as rotas [OK]
+[ok] - Da um check se o servidor está funcionando 
+[ok] - Criar a service para a entidade escolhida, e fazer o CRUD 
+[ok] - Fazer a controller
+[ok] - Criar as rotas no arquivo de rotas 
+[ok] - Testar as rotas 
 [] - Partir para as rotas com regra de negócio
 
 	
 Entidades:
 
-- Usuário:
+[ok]- Usuário:
 	Atributos: ID, username, peso, senha, e-mail. [OK]
 	
-- Categoria:
+[ok]- Categoria:
 	Atributos: ID, nome, cor (para identificação visual). [OK]
 
-- Tarefa:
+[ok]- Tarefa:
 	Atributos: ID, título, descrição, data de criação, data de conclusão, tipo, categoria (opcional), status (pendente, em andamento, concluída), e usuário associado. [OK]
 
 
@@ -31,20 +31,20 @@ Requisitos das Rotas (OPICIONAL - FAÇA POR ÚLTIMO):
 
 Autenticação:
 
-Rota de registro de usuário. [OK]
-Rota de login de usuário.
+[ok]Rota de registro de usuário.
+[ok]Rota de login de usuário.
 
 Tarefas:
 
-Rota para criação de uma nova tarefa.
-Rota para listar todas as tarefas de um usuário.
-Rota para obter detalhes de uma tarefa específica.
+[ok]Rota para criação de uma nova tarefa.
+[ok]Rota para listar todas as tarefas de um usuário.
+[ok]Rota para obter detalhes de uma tarefa específica.
 Rota para atualizar uma tarefa existente.
 Rota para excluir uma tarefa.
 
 Categorias:
 
-Rota para criação de uma nova categoria.
+[ok]Rota para criação de uma nova categoria.
 Rota para listar todas as categorias de um usuário.
 Rota para obter detalhes de uma categoria específica.
 Rota para atualizar uma categoria existente.

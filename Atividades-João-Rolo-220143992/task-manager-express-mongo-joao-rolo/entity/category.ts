@@ -1,11 +1,11 @@
-import { Schema, model, Document } from "mongoose";
+import mongoose,{ Schema, model, Document } from "mongoose";
 
-export interface Category extends Document {
+export default interface CategoryInterface extends Document {
     name: String;
     color: String;
 }
 
-const categorySchema = new Schema<Category>({
+const categorySchema = new Schema<CategoryInterface>({
     name: String,
     color: String
 }, {
@@ -13,5 +13,7 @@ const categorySchema = new Schema<Category>({
 });
 
 
-export default model<Category>('Category', categorySchema);
+const Category = mongoose.models.user || model<CategoryInterface>('Category', categorySchema);
+
+export { Category };
 

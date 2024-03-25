@@ -9,6 +9,11 @@ class TaskController {
         return res.json(createdTask)
     }
 
+    async findById(req:Request, res: Response){
+        const findedTask = await new TaskService().findById(req.params.id)
+        return res.json(findedTask);
+    }
+
 }
 
 export default new TaskController()

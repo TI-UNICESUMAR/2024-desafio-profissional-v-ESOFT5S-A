@@ -8,6 +8,8 @@ routes.post('/user', userController.create)
 routes.get('/user/:id', userController.findByID)
 routes.post('/task', taskController.createTask)
 routes.post('/category', categoryController.create.bind(categoryController))
+routes.get('/login', userController.userLogin.bind(userController))
+routes.get('/task-detail/:id',taskController.findById)
 
 
 
