@@ -13,5 +13,5 @@ const categorySchema = new Schema<Category>({
 });
 
 
-export default model<Category>('User', categorySchema);
+export default model<Category>('Category', categorySchema);
 
