@@ -14,6 +14,17 @@ class TaskController {
         return res.json(findedTask);
     }
 
+    async delete(req:Request, res: Response){
+        const deletedTask = await new TaskService().delete(req.params.id)
+        return res.json(deletedTask);
+    }
+
+    async getAllByUser(req:Request, res:Response){
+        const findedTasks = await new TaskService().findAllByUserId(req.params.id)
+        return res.status(200).json(findedTasks);
+    }
+
+
 }
 
 export default new TaskController()

@@ -39,8 +39,8 @@ Tarefas:
 [ok]Rota para criação de uma nova tarefa.
 [ok]Rota para listar todas as tarefas de um usuário.
 [ok]Rota para obter detalhes de uma tarefa específica.
-Rota para atualizar uma tarefa existente.
-Rota para excluir uma tarefa.
+[]Rota para atualizar uma tarefa existente.
+[ok]Rota para excluir uma tarefa.
 
 Categorias:
 

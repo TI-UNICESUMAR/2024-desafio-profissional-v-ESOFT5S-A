@@ -11,6 +11,8 @@ export default class CategoryService {
         const findedCategory = await Category.findById(id);
         return findedCategory;
     }
+
+    //async findAllCategoryByUser()
 }
 
 export {CategoryService}

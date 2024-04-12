@@ -1,4 +1,4 @@
-import { Category } from './../entity/category';
+import Userinterface from "../entity/user"
 import { Task } from "../entity/task"
 import taskModel from "../entity/task"
 import UserService from "../services/user-service";
@@ -23,6 +23,18 @@ export default class TaskService {
     async findById(id: Task["_id"]) {
         const findedBook = await taskModel.findById(id);
         return findedBook;
+    }
+
+    async delete(id: Task["_id"]) {
+        const deletedTask = await taskModel.findByIdAndDelete(id);
+        console.log("task deletada: ", deletedTask);
+        return deletedTask;
+    }
+
+
+    async findAllByUserId(id:Userinterface["_id"]){
+        const tasks = await taskModel.find({ responsibleUser: id });
+        return tasks;
     }
 
 
