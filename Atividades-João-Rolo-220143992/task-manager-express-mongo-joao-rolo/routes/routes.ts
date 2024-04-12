@@ -12,6 +12,7 @@ routes.get('/login', userController.userLogin.bind(userController))
 routes.get('/task-detail/:id',taskController.findById)
 routes.delete('/task-delete/:id',taskController.delete)
 routes.get('/task/all-from-user/:id',taskController.getAllByUser)
+routes.get('/category/all-from-user/:id',categoryController.getAllCategoryByUser)
 
 
 
