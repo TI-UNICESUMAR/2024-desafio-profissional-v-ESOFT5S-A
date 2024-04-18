@@ -18,7 +18,7 @@ class App {
 
     public async database() {
         try {
-            await mongoose.connect('mongodb+srv://kds:testeteste@cluster0.whyexvu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/livros-api');
+            await mongoose.connect('mongodb://0.0.0.0:27017/livros-api');
             console.log("Sucesso ao conectar com o banco de dados")
         } catch (error) {
             console.error("Não foi possível conectar na base de dados:", error)
