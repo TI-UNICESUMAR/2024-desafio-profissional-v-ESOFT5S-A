@@ -1,0 +1,9 @@
+{
+  "nome": "bulbasaur",
+  "tipos": [
+    "grass",
+    "poison"
+  ],
+  "peso": 69,
+  "altura": 7
+}
