@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <p id="jsonPokemons">oi</p>
+    
+    <script>
+        fetch('pokemon.json')
+            .then(response => response.json()) // Parse o JSON
+            .then(data => {
+
+                pokemon = document.getElementById('jsonPokemons');
+                    
+                
+            })
+            .catch(error => {
+                console.error('Erro ao carregar o arquivo JSON:', error);
+                // Trata qualquer erro que possa ocorrer durante o processo
+                alert('Ocorreu um erro ao carregar o arquivo JSON.');
+            });
+    </script>
+    </script>
+</body>
+</html>
